@@ -1,0 +1,266 @@
+.navebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to top right, rgb(212, 0, 255), #9900ff, #6F00FF, #3C00FF);
+    padding: 10px 20px;
+
+}
+
+.other {
+    display: flex;
+    gap: 20px;
+
+}
+
+.other a {
+    color: white;
+    text-decoration: none;
+
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 25px;
+
+}
+
+.photo {
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+    background-image: url("https://uploads.onecompiler.io/44fgyygtm/44ncjj87k/MY%20PIC.JPG");
+    background-size: cover;
+    border-radius: 50%;
+    border: 3px solid #e7d5eb;
+}
+
+.photo {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* RGB animated ring */
+.photo::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(45deg,
+            red,
+            orange,
+            yellow,
+            green,
+            cyan,
+            blue,
+            violet,
+            red);
+    background-size: 400%;
+    animation: rgbRotate 6s linear infinite;
+    z-index: -1;
+}
+
+/* Inner mask (keeps photo clean) */
+.photo::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    background: white;
+    /* match your page bg */
+    z-index: -1;
+}
+
+/* Image styling */
+.photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Animation */
+@keyframes rgbRotate {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 400% 50%;
+    }
+}
+
+.container {
+    height: 140px;
+    width: 100%;
+    background: linear-gradient(to bottom right, rgb(212, 0, 255), #9900ff, #6F00FF, #3C00FF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    height: 110%;
+    width: 100%;
+    inset: 0;
+    background: linear-gradient(to bottom right, red,
+            orange,
+            yellow,
+            green,
+            cyan,
+            blue,
+            violet,
+            red);
+
+    z-index: -1;
+}
+
+
+.content_area {
+    margin-top: 10px;
+    height: 400px;
+    background: linear-gradient(to bottom, #000000, #9900ff, rgb(31, 31, 179), #000000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.content_area .content {
+    background: linear-gradient(to bottom right, #000000, #220829, #560a81, #7608be, #6200ff, #c800ff);
+    height: 250px;
+    width: 60%;
+    border-radius: 10px;
+    border: 2px solid white;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    color: white;
+    word-wrap: break-word;
+
+}
+
+.content {
+    position: relative;
+    width: 350px;
+    /* adjust as needed */
+    height: 350px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #2b0033, #7a00cc);
+    z-index: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.content .Text {
+    padding-left: 20px;
+}
+
+/* RGB animated border */
+.content::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    /* thickness of border */
+    border-radius: 18px;
+    background: linear-gradient(45deg,
+            red,
+            orange,
+            yellow,
+            green,
+            cyan,
+            blue,
+            violet,
+            red);
+    background-size: 400%;
+    z-index: -1;
+    box-shadow: 36px;
+    filter: blur(2px);
+    animation: rgbMove 6s linear infinite;
+}
+
+/* Inner mask to keep center clean */
+.content::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #2b0033, #7a00cc);
+    z-index: -1;
+}
+
+/* Animation */
+@keyframes rgbMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 400% 50%;
+    }
+}
+
+/* Media query for iPhone XS Max (414px width) */
+@media only screen and (max-width: 414px) {
+
+    /* 1. Navbar: Reduce padding and font size so links don't wrap awkwardly */
+    .navebar {
+        padding: 10px 15px;
+    }
+
+    .logo a {
+        font-size: 1.2rem;
+    }
+
+    .other {
+        gap: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* 2. Container: Adjust height to prevent the profile photo from overlapping */
+    .container {
+        height: 120px;
+    }
+
+    /* 3. Content Area: Remove fixed height so it expands with your text */
+    .content_area {
+        height: auto;
+        padding: 40px 0;
+        /* Adds breathing room top and bottom */
+    }
+
+    /* 4. The Card: Make width fluid instead of fixed 350px */
+    .content {
+        width: 90%;
+        /* Takes up 90% of screen width */
+        height: auto;
+        /* Grows based on the number of skills/projects */
+        padding: 20px;
+        /* Internal spacing for text */
+        min-height: 400px;
+    }
+
+    /* 5. Typography: Ensure list items are legible and don't overflow */
+    .content div {
+        width: 100%;
+    }
+
+    .content li {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+}
